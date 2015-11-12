@@ -18,7 +18,6 @@ public class BingoGame{
 	 * any new row or column has been filled.
 	 */
 	
-	//Thank you Austin
 
 	public static void main(String[] args){
 		Scanner input = new Scanner(System.in);
