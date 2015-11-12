@@ -1,3 +1,5 @@
+package bingoGame;
+
 public enum BingoLetter{
 	B,
 	I,

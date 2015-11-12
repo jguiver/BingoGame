@@ -1,3 +1,5 @@
+package bingoGame;
+
 public class Ball{
 
 	/* This class is used to represent

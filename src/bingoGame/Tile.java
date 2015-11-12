@@ -1,3 +1,5 @@
+package bingoGame;
+
 public class Tile{
 	private String text;
 	private boolean filled;
