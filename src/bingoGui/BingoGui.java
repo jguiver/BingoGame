@@ -6,14 +6,23 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
 import java.awt.GridLayout;
+
 import javax.swing.JButton;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Color;
+
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+
+import bingoGame.Board;
+import bingoGame.Tile;
+
+import java.util.Random;
 
 public class BingoGui extends JFrame {
 
@@ -21,6 +30,7 @@ public class BingoGui extends JFrame {
 	private JButton[][] buttons = new JButton[5][5];
 	private int[][] numbers;
 	private int currentNumber = 9;
+	private Board board;
 
 	/**
 	 * Launch the application.
@@ -36,8 +46,9 @@ public class BingoGui extends JFrame {
 					}
 				}
 				try {
-					
-					BingoGui frame = new BingoGui(nums);
+					Random rand = new Random(17);
+					Board board = new Board(rand);
+					BingoGui frame = new BingoGui(board);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,9 +60,10 @@ public class BingoGui extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public BingoGui(final int[][] numbers) {
+	public BingoGui(Board board) {
 		
-		this.numbers = numbers;
+		this.board = board;
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 800);
 		contentPane = new JPanel();
@@ -70,13 +82,18 @@ public class BingoGui extends JFrame {
 				
 				final int y = i;
 				final int x = j;
-				buttons[i][j] = new JButton();
-				panelMain.add(buttons[i][j]);
-				buttons[i][j].addActionListener(new ActionListener(){
+				JButton currentButton = new JButton();
+				buttons[x][y] = currentButton;
+				Tile currentTile = board.getTileAt(x, y);
+				currentButton.setText(currentTile.getText());
+				panelMain.add(currentButton);
+				currentButton.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent arg0){
-						String test = Integer.toString(numbers[y][x]);
-						if(currentNumber == numbers[y][x])
-							buttons[y][x].setText(test);
+						if(currentNumber == Integer.parseInt(currentTile.getText()))
+						{
+							currentButton.setText("X");
+							currentTile.fill();
+						}
 					}});
 				
 			}

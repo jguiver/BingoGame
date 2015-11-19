@@ -1,8 +1,10 @@
 package bingoGame;
 
 import java.util.Scanner;
+
 import java.util.Random;
 import java.util.ArrayList;
+import bingoGui.BingoGui;
 
 public class BingoGame{
 	/* CODE EXPLANATION:
@@ -29,8 +31,8 @@ public class BingoGame{
 																// the game goes on, each one will
 																// contain the letter and number to
 																// call out every game "turn".
-		Board board = new Board(rand);
-
+		
+		/*
 		// fill uncalledBalls with balls of every
 		// combination of letters and numbers
 		// (B 1 to B 100, I 1 to I 100, etc)
@@ -75,5 +77,6 @@ public class BingoGame{
 			}
 		}
 		input.close();
+		*/
 	}
 }
