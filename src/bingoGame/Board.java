@@ -47,10 +47,19 @@ public class Board{
 		for(int y = 0; y < 5; y++){
 			for(int x = 0; x < 5; x++){
 				while(usedValues.contains(number)){
-					number = rand.nextInt(100) + 1;
+					number = rand.nextInt(20) + 1;
 				}
 				usedValues.add(number);
-				tiles[x][y] = new Tile(Integer.toString(number));
+				if (x == 2 && y == 2)
+				{
+					Tile tile = new Tile("FREE");
+					tile.fill();
+					tiles[x][y] = tile;
+				}
+				else
+				{
+					tiles[x][y] = new Tile(Integer.toString(number));
+				}
 			}
 		}
 	}
